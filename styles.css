@@ -1,0 +1,88 @@
+:root {
+    --bg-clr: #DED9E2;
+    --primary-clr: #659157;
+    --accent-clr: #A1C084;
+    --text-clr: #251605;
+    --text-accent: #F5CB5C;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-clr);
+    color: var(--text-clr)
+}
+
+.container {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+h1 {
+   margin: 5rem auto;
+}
+  
+span {
+    font-style: bold;
+    margin-left: 1rem;
+}
+  
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+  
+
+.investment-card {
+    background-color: var(--primary-clr);
+    width: 30vw;
+    height: 25vh; 
+    align-content: center;
+    border-radius: 1rem;
+    display: grid;
+    justify-items: center;
+}
+
+small {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-accent);
+}
+  
+.price {
+    font-size: 1.5rem;
+    font-style: bold;
+}
+
+.price-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+  
+.name-container {
+    background: var(--accent-clr);
+    border-radius: 0.5rem;
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    width: inherit;
+}
+
+.card-name {
+    font-size: smaller;
+    margin-top: -2.2rem;
+}
+  
+   @media only screen and (min-width: 992px) {
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
+  }
