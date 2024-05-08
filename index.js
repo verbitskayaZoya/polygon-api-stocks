@@ -1,4 +1,4 @@
-import { apiKey } from '/apiKey'
+import { apiKey } from '/apiKey.js'
 
 const currentDate = new Date(getPreviousDate()).toLocaleString('en-US').slice(0, 8)
 displayStocks()
@@ -35,9 +35,8 @@ function getPreviousDate() {
 
 async function getDataFromStock() {
   try {
-    const tickersArrFromApi = await fetch(
-      `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/${getPreviousDate()}?adjusted=true&apiKey=${apiKey}`,
-    ).then(res => res.json())
+    const response = await fetch(`https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/${getPreviousDate()}?adjusted=true&apiKey=${apiKey}`)
+    const tickersArrFromApi = await response.json()
     let topFourAggregatesArr = tickersArrFromApi.results
       .sort((a, b) => b.v - a.v)
       .slice(0, 4)
@@ -57,9 +56,8 @@ async function getDataFromStock() {
 async function getTickersName(popularTickersArr) {
   return await Promise.all(
     popularTickersArr.map(async item => {
-      return await fetch(
-        `https://api.polygon.io/v3/reference/tickers?ticker=${item.T}&active=true&apiKey=${apiKey}`,
-      ).then(res => res.json())
+      const response = await fetch(`https://api.polygon.io/v3/reference/tickers?ticker=${item.T}&active=true&apiKey=${apiKey}`)
+      return response.json()
     }),
   )
 }
